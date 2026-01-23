@@ -400,7 +400,7 @@ abstract public class WebsocketSampler extends AbstractSampler implements Thread
     public HeaderManager getMergedHeaderManager(final HeaderManager value) {
         HeaderManager currentHeaderMgr = getHeaderManager();
         HeaderManager mergedHeaderMgr = value;
-        if (currentHeaderMgr != null) {
+        if (currentHeaderMgr != null && currentHeaderMgr != mergedHeaderMgr) {
             mergedHeaderMgr = currentHeaderMgr.merge(value,true);
             getLogger().debug("Existing HeaderManager " + currentHeaderMgr.getName() + " merged with " + mergedHeaderMgr.getName());
             for (int i = 0; i < mergedHeaderMgr.getHeaders().size(); i++) {
